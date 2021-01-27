@@ -6,11 +6,11 @@ import os
 
 pygame.init()
 
-GRID_WIDTH = 20
+GRID_WIDTH = 13
 GRID_NUM_WIDTH = 15
-GRID_NUM_HEIGHT = 25
+GRID_NUM_HEIGHT = 15
 WIDTH, HEIGHT = GRID_WIDTH * GRID_NUM_WIDTH, GRID_WIDTH * GRID_NUM_HEIGHT
-SIDE_WIDTH = 200
+SIDE_WIDTH = 45
 SCREEN_WIDTH = WIDTH + SIDE_WIDTH
 WHITE = (0xff, 0xff, 0xff)
 BLACK = (0, 0, 0)
@@ -167,7 +167,8 @@ def draw_matrix():
                              GRID_WIDTH, GRID_WIDTH), 2)
 
 def draw_score():
-    show_text(screen, u'得分：{}'.format(score), 20, WIDTH + SIDE_WIDTH // 2, 100)
+    show_text(screen, u'得分:', 16, WIDTH + SIDE_WIDTH // 2, 100)
+    show_text(screen, u'{}'.format(score), 16, WIDTH + SIDE_WIDTH // 2, 120)
 
 
 def remove_full_line():
@@ -195,7 +196,7 @@ def remove_full_line():
 
 def show_welcome(screen):
     show_text(screen, u'俄罗斯方块', 30, WIDTH / 2, HEIGHT / 2)
-    show_text(screen, u'按任意键开始游戏', 20, WIDTH / 2, HEIGHT / 2 + 50)
+    show_text(screen, u'按任意键开始游戏', 16, WIDTH / 2, HEIGHT / 2 + 50)
 
 
 running = True
@@ -212,13 +213,13 @@ while running:
                 gameover = False
                 live_cube = CubeShape()
                 break
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_q:
                 live_cube.left()
-            elif event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_RIGHT or event.key == pygame.K_w:
                 live_cube.right()
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_DOWN or event.key == pygame.K_r:
                 live_cube.down()
-            elif event.key == pygame.K_UP:
+            elif event.key == pygame.K_UP or event.key == pygame.K_e:
                 live_cube.rotate()
             elif event.key == pygame.K_SPACE:
                 while live_cube.down() == True:
