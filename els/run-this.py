@@ -203,6 +203,7 @@ running = True
 gameover = True
 counter = 0
 live_cube = None
+pygame.mouse.set_visible(False)
 while running:
     clock.tick(FPS)
     for event in pygame.event.get():
